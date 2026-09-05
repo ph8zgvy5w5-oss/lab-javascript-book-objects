@@ -38,7 +38,7 @@
 
 
 // Your code here:
-const booksArray =[
+const booksArray = [
 
 {
    title: "The Old Man and the Sea",
@@ -81,59 +81,50 @@ const booksArray =[
 },
 ];
     
-console.log(booksArray[0].title)
-console.log(booksArray[1].title)
-console.log(booksArray[2].title)
-console.log(booksArray[3].title)
+//console.log(booksArray[0].title)
+//console.log(booksArray[1].title)
+//console.log(booksArray[2].title)
+//console.log(booksArray[3].title)
 
 
 
 // Iteration 2 | Book Details
-function getBookDetails(Book1, Book2, Book3, Book4) {
+function getBookDetails(book) {
   // Your code here:
-  const bookTitle = "title";
-  const bookAuthor = "author";
-  const bookPages = "pages";
-  const book1filter = booksArray[0]-[title]-[author][pages];
-  const book2filter = booksArray[1]-[title]-[author][pages];
-  const book3filter = booksArray[2]-[title]-[author][pages];
-  const book4filter = booksArray[3]-[title]-[author][pages];
-
-  console.log(book1filter, book2filter, book3filter, book4filter "pages." )
-  
-
+ return `${book.title} - ${book-author} - ${book.pages} pages`;
 
 }
+
+console.log(getBookDetails);
 
 
 
 // Iteration 3 | Delete Language
 // Your code here:
 
- const bookslanguage = "language";
-  const Regroupelanguage = booksArray[0].details[1][2][3][title];
-  
-  delete Regroupelanguage;
 
+
+  booksArray.forEach(book => {
+  delete book.details.language;
+});
+
+console.log(booksArray);
 
 // Iteration 4 | Estimated Reading Time
 // Your code here:
 
-const addElements = ["readingTime"];
-const elementsCopie=- = []
+/* booksArray.forEach((book) => {
+  book.readingTime = Math.ceil(book.pages * 500) /90 )
+} */
 
-//for(let i=0; i < addElements.length; Ii++) {
-  //elementsCopie.push(addElements[i]);
-//}
-
-addElements.forEach(addElements => {
-  elementsCopie.push(addElements);
+  booksArray.forEach(book => {
+  
+  const time = (book.pages * 500) / 90;
+  book.readingTime = Math.ceil(time);
 });
 
-Book1.readingTime : (Math.ceil((book.pages * 128) / 90));
-Book2.readingTime : (Math.ceil((book.pages * 256) / 90));
-Book3.readingTime : (Math.ceil((book.pages * 352) / 90));
-Book4.readingTime : (Math.ceil((book.pages * 288) / 90));
+console.log(booksArray);
+
 
 // Bonus: Iteration 5 | Books Dictionary
 
@@ -158,15 +149,43 @@ const dictionary = {
     ],
 };
 
-function booksByAuthor() {
+function booksByAuthor(dictionary) {
   // Your code here:
+   const result = [];
+
+  
+  for (const author in dictionary) {
+    const books = dictionary[author];
+
+    
+    books.forEach(bookArr => {
+      const [title, pages] = bookArr;
+      result.push({
+        title: title,
+        pages: pages,
+        author: author
+      });
+    });
+  }
+
+  return result;
   
 }
 
 
 
 // Bonus: Iteration 6 | Average Page Count
-function averagePageCount() {
+function averagePageCount(books) {
   // Your code here:
-  
+     if (books.length === 0) return 0; 
+
+   let totalPages = 0;
+  for (let book of books) {
+    totalPages += book.pages;
+  }
+
+  // Calculate average
+  let average = totalPages / books.length;
+  return average;
 }
+  
